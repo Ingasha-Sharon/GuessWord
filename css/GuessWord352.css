@@ -1,0 +1,129 @@
+#fixedheader {
+    width: 351px;
+}
+
+.narrowbody {
+    width: 351px; /* screensize - eight */
+    margin-left: 1px;
+    font-size: 11px;
+}
+
+.gamename {
+    font-size: 16px;
+}
+
+img {
+    height: 68px;
+    width: 68px;
+}
+
+.topspacer {
+    height: 40px;
+}
+
+.bottomspacer {
+    height: 11px;
+}
+
+.historymargins {
+    margin-top: 73px;
+}
+
+.gridletter {
+    margin: 2px;
+    border-radius: 4px;
+    width: 45px;
+    height: 34px;
+    font-size: 27px;
+    text-shadow: 1px 0 0 black;
+}
+
+.key, .backspacekey, .enterkey {
+    margin: 1px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 4px #999;
+    height: 41px;    
+}
+
+.key {
+    width: 33px;
+    font-size: 13px;
+}
+
+.firstkeyfirstrow {
+    margin-left: 6px;
+}
+
+.firstkeysecondrow {
+    margin-left: 23px;
+}
+
+.firstkeythirdrow {
+    margin-left: 56px;
+}
+
+.backspacekey {
+    width: 168px;
+    font-size: 13px;
+}
+
+.enterkey {
+    width: 168px;
+    font-size: 13px;
+}
+
+.fourcolmargin {
+    margin-left: 77px;
+}
+
+.fivecolmargin {
+    margin-left: 54px;
+}
+
+.sixcolmargin {
+    margin-left: 28px;
+}
+
+.closebutton {
+    border-radius: 4px;
+    width: 22px;
+    height: 22px;
+    margin: 2px 2px 6px 6px;
+}
+
+.message {
+    font-size: 13px;
+    font-weight: 500;
+    height: 42px;
+}
+
+.restartmessage {
+    margin-left: 13px;
+    font-size: 16px;
+    font-weight: 500;
+    height: 160px;
+    width: 325px;
+}
+
+#guesswordtitle {
+/*    height: 55px;*/
+    height: 36px;
+    width: 258px;
+}
+
+.bigtitletext {
+    font-size: 30px;
+    text-shadow: 1px 1px #000000;
+}
+
+.lightyellowtext {
+    font-size: 8px;
+}
+
+.parahead {
+    font-size: 14px;
+}
+
+.scroll {
+    height: 352px;
+}

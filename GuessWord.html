@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Guess Word</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#317EFB" />
+    <meta name="robots" content="follow" />
+    <!--<link rel="stylesheet" href="css/w3-min.css">-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link id="stylesheet" rel="stylesheet" href="css/GuessWord.css" />
+    <link id="screensize" rel="stylesheet" href="css/GuessWordFull.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/GuessWord.js" type="text/javascript"></script>
+    <script src="js/GuessWordDictionaries.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="fixedheader" class="w3-top narrowbody">
+        <div id="largemenu" class="w3-bar greengrad">
+            <div id="gamename" class="gamename centerelement">
+                <div id="guesswordtitle" class="w3-show">
+                    <span class="bigtitletext centerchild">GuessWord</span>
+                    <span id="copyright" class="lightyellowtext centerchild" style="clear: left;"></span>
+                </div>
+            </div>
+            <div id="menu" class="w3-bar w3-show">
+                <a id="play" href="javascript: StartGame();" class="w3-bar-item w3-button w3-left-align whitetext">🎬Play</a>
+                <a id="about" href="javascript: ShowAbout();" class="w3-bar-item w3-button w3-left-align whitetext">🧐About</a>
+                <a id="history" href="javascript: ShowHistory();" class="w3-bar-item w3-button w3-left-align whitetext">📜History</a>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button whitetext" onclick="ShowDropDownBody('gamesdropdown');">🎲Games&#x25BE;</button>
+                    <div id="gamesdropdown" class="w3-dropdown-content w3-bar-block w3-card-4 greengrad whitetext">
+                        <a id="link1" href="javascript: SetGridWidth(page_fourlettergame, normalMode);" class="w3-bar-item w3-button">4-letter game</a>
+                        <a id="link2" href="javascript: SetGridWidth(page_fivelettergame, normalMode);" class="w3-bar-item w3-button">5-letter game</a>
+                        <a id="link3" href="javascript: SetGridWidth(page_sixlettergame, normalMode);" class="w3-bar-item w3-button">6-letter game</a>
+                        <a id="link3" href="javascript: SetGridWidth(page_fivelettergame, dailyMode);" class="w3-bar-item w3-button">Daily challenge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="topspacer">
+
+    </div>-->
+    <div id="page_play" class="page w3-show w3-container w3-cell-row">
+        <div id="boardleftmargin" class="fivecolmargin">
+            <div id="column row0">
+                <span id="0_0" class="gridletter empty delay0 w3-cell"></span>
+                <span id="0_1" class="gridletter empty delay1 w3-cell"></span>
+                <span id="0_2" class="gridletter empty delay2 w3-cell"></span>
+                <span id="0_3" class="gridletter empty delay3 w3-cell"></span>
+                <span id="0_4" class="gridletter empty delay4 w3-cell"></span>
+                <span id="0_5" class="gridletter empty delay5 w3-cell"></span>
+            </div>
+            <div id="column row1">
+                <span id="1_0" class="gridletter empty delay0 w3-cell"></span>
+                <span id="1_1" class="gridletter empty delay1 w3-cell"></span>
+                <span id="1_2" class="gridletter empty delay2 w3-cell"></span>
+                <span id="1_3" class="gridletter empty delay3 w3-cell"></span>
+                <span id="1_4" class="gridletter empty delay4 w3-cell"></span>
+                <span id="1_5" class="gridletter empty delay5 w3-cell"></span>
+            </div>
+            <div id="column row2">
+                <span id="2_0" class="gridletter empty delay0 w3-cell"></span>
+                <span id="2_1" class="gridletter empty delay1 w3-cell"></span>
+                <span id="2_2" class="gridletter empty delay2 w3-cell"></span>
+                <span id="2_3" class="gridletter empty delay3 w3-cell"></span>
+                <span id="2_4" class="gridletter empty delay4 w3-cell"></span>
+                <span id="2_5" class="gridletter empty delay5 w3-cell"></span>
+            </div>
+            <div id="column row3">
+                <span id="3_0" class="gridletter empty delay0 w3-cell"></span>
+                <span id="3_1" class="gridletter empty delay1 w3-cell"></span>
+                <span id="3_2" class="gridletter empty delay2 w3-cell"></span>
+                <span id="3_3" class="gridletter empty delay3 w3-cell"></span>
+                <span id="3_4" class="gridletter empty delay4 w3-cell"></span>
+                <span id="3_5" class="gridletter empty delay5 w3-cell"></span>
+            </div>
+            <div id="column row4">
+                <span id="4_0" class="gridletter empty delay0 w3-cell"></span>
+                <span id="4_1" class="gridletter empty delay1 w3-cell"></span>
+                <span id="4_2" class="gridletter empty delay2 w3-cell"></span>
+                <span id="4_3" class="gridletter empty delay3 w3-cell"></span>
+                <span id="4_4" class="gridletter empty delay4 w3-cell"></span>
+                <span id="4_5" class="gridletter empty delay5 w3-cell"></span>
+            </div>
+            <div id="column row5">
+                <span id="5_0" class="gridletter empty delay0 w3-cell"></span>
+                <span id="5_1" class="gridletter empty delay1 w3-cell"></span>
+                <span id="5_2" class="gridletter empty delay2 w3-cell"></span>
+                <span id="5_3" class="gridletter empty delay3 w3-cell"></span>
+                <span id="5_4" class="gridletter empty delay4 w3-cell"></span>
+                <span id="5_5" class="gridletter empty delay5 w3-cell"></span>
+            </div>
+        </div>
+
+        <div id="6_0" class="bottomspacer">
+
+        </div>
+        <div id="keyboard">
+            <div class="firstkeyfirstrow">
+                <div id="q" class="key delay5 empty w3-cell">Q</div>
+                <div id="w" class="key delay5 empty w3-cell">W</div>
+                <div id="e" class="key delay5 empty w3-cell">E</div>
+                <div id="r" class="key delay5 empty w3-cell">R</div>
+                <div id="t" class="key delay5 empty w3-cell">T</div>
+                <div id="y" class="key delay5 empty w3-cell">Y</div>
+                <div id="u" class="key delay5 empty w3-cell">U</div>
+                <div id="i" class="key delay5 empty w3-cell">I</div>
+                <div id="o" class="key delay5 empty w3-cell">O</div>
+                <div id="p" class="key delay5 empty w3-cell">P</div>
+            </div>
+            <div class="firstkeysecondrow">
+                <div id="a" class="key delay5 empty w3-cell">A</div>
+                <div id="s" class="key delay5 empty w3-cell">S</div>
+                <div id="d" class="key delay5 empty w3-cell">D</div>
+                <div id="f" class="key delay5 empty w3-cell">F</div>
+                <div id="g" class="key delay5 empty w3-cell">G</div>
+                <div id="h" class="key delay5 empty w3-cell">H</div>
+                <div id="j" class="key delay5 empty w3-cell">J</div>
+                <div id="k" class="key delay5 empty w3-cell">K</div>
+                <div id="l" class="key delay5 empty w3-cell">L</div>
+            </div>
+            <div class="firstkeythirdrow">
+                <div id="z" class="key delay5 empty w3-cell">Z</div>
+                <div id="x" class="key delay5 empty w3-cell">X</div>
+                <div id="c" class="key delay5 empty w3-cell">C</div>
+                <div id="v" class="key delay5 empty w3-cell">V</div>
+                <div id="b" class="key delay5 empty w3-cell">B</div>
+                <div id="n" class="key delay5 empty w3-cell">N</div>
+                <div id="m" class="key delay5 empty w3-cell">M</div>
+            </div>
+            <div id="buttonrow" class="firstkeyfirstrow">
+                <div id="backspace" class="backspacekey empty w3-cell">
+                    ⌫ Backspace
+                </div>
+                <div id="enter" class="enterkey empty w3-cell">
+                    Enter ⏎
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="message" class="message greengrad w3-hide w3-container">
+        <div class="clearboth">
+            <button id="closebutton" class="closebutton">
+                <div>
+                    X
+                </div>
+            </button>
+        </div>
+        <div>
+            <div>
+                <img id="msgicon" class="visible" src="" alt="" />
+            </div>
+            <p id="messagetext" class="messagetext">
+            </p>
+        </div>
+    </div>
+
+    <!-- <div id="restartmessage" class="restartmessage greygrad w3-hide">
+        <div>
+            <div>
+                <img id="msgicon" class="visible question" src="img/question.png" alt="" />
+            </div>
+            <p class="messagetext">
+                You had a game in progress. Would you like to continue that game?
+            </p>
+            <div class="clearboth">
+                <button id="yesbutton" class="yesbutton">
+                    <div>
+                        Yes
+                    </div>
+                </button>
+                <button id="nobutton" class="yesbutton">
+                    <div>
+                        No
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>-->
+    <div id="modalpopup" class="modalpopup w3-hide">
+
+    </div>
+    <div id="page_history" class="w3-hide w3-top narrowbody">
+        <div id="basicstats" class="historymargins w3-bar greygrad">
+            <div class="clearboth">
+                <button id="closehistory" class="closebutton">
+                    <div>
+                        X
+                    </div>
+                </button>
+            </div>
+            <div class="gamestathead gamename w3-cell">
+                Your Games Record
+            </div>
+            <div>
+                <span class="gamestatcolhead w3-cell">Games<br />Played</span>
+                <span class="gamestatcolhead w3-cell">Games<br />Won</span>
+                <span class="gamestatcolhead w3-cell">Games<br />Lost</span>
+                <span class="gamestatcolhead w3-cell">Longest<br />Streak</span>
+                <span class="gamestatcolhead w3-cell">Current<br />Streak</span>
+            </div>
+            <div>
+                <span id="gamesplayed" class="gamestat w3-cell">0</span>
+                <span id="gameswon" class="gamestat w3-cell">0</span>
+                <span id="gameslost" class="gamestat w3-cell">0</span>
+                <span id="longeststreak" class="gamestat w3-cell">0</span>
+                <span id="currentstreak" class="gamestat w3-cell">0</span>
+            </div>
+            <div id="turns" class="gamestathead gamename w3-cell">
+                Turns Taken
+            </div>
+            <div class="turnsmargin">
+                <div id="one" class="gamestatcolhead w3-cell">1</div>
+                <div id="oneturn" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="two" class="gamestatcolhead w3-cell">2</div>
+                <div id="twoturns" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="three" class="gamestatcolhead w3-cell">3</div>
+                <div id="threeturns" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="four" class="gamestatcolhead w3-cell">4</div>
+                <div id="fourturns" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="five" class="gamestatcolhead w3-cell">5</div>
+                <div id="fiveturns" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="six" class="gamestatcolhead w3-cell">6</div>
+                <div id="sixturns" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="lost" class="gamestatcolhead w3-cell">Lost</div>
+                <div id="lostgame" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div class="turnsgap"></div>
+            <div class="turnsgap"></div>
+            <div>
+                <div id="mostused" class="gamestatcolhead w3-cell">Best</div>
+                <div id="firstword" class="turnsbar w3-cell"></div>
+            </div>
+            <div class="turnsgap"></div>
+            <div class="turnsgap"></div>
+            <div class="turnsgap"></div>
+            <div class="centerchild">
+                <button id="clearhistory" class="clearhistory greygrad" onclick="ClearHistory();">
+                    Clear History
+                </button>
+                <button id="clearlosses" class="clearhistory greygrad" onclick="ClearLossesOnly();">
+                    Clear Losses
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page_about" class="w3-hide w3-top narrowbody">
+        <div id="aboutthe game" class="historymargins w3-bar lightgreygrad padded4px">
+            <div class="clearboth">
+                <button id="closeabout" class="closebutton">
+                    <div>
+                        X
+                    </div>
+                </button>
+            </div>
+            <div>
+                <p>Developer&rsquo;s <a class="blue" id="DeveloperEmail" href="">eMail</a> for reporting bugs and suggesting enhancements.</p>
+            </div>
+            <div id="version">
+
+            </div>
+            <div id="aboutcopyright">
+
+            </div>
+            <div class="scroll">
+                <p class="parahead">Why</p>
+                <div id="whybody">
+                    <b>GuessWord</b> is obviously inspired by Wordle. My partner in life was concerned that the
+                    NYT might put her favorite word game behind a pay-wall, so she asked me to write something like it just for her.
+                    As a retired software developer, and somewhat rusty, I took up the challenge.
+                    <br />
+                    <br />
+                    I used W3.CSS, CSS, Javascript, jQuery and HTML, edited using Visual Studio 2022. I also created
+                    different dictionaries from those used in Wordle. The Wordle dictionary and solutions are in plain text
+                    and easy to find but I decided to use a dictionary based on TWL06 and a solution set based on various common word
+                    lists.
+                </div>
+                <p class="parahead">How to play</p>
+                <div id="howbody">
+                    Your task is to deduce the target word that <b>GuessWord</b> has randomly selected
+                    from its dictionary of common words. You can enter your guess using the
+                    on-screen keyboard or a physical keyboard, if available. When you select
+                    "enter", <b>GuessWord</b> colors each letter in your guess using the following rules:
+                    <ol>
+                        <li>If the letter is not present in the target word, it is colored grey.</li>
+                        <li>
+                            If the letter is present in the target word but is in the wrong position,
+                            it is colored yellow.
+                        </li>
+                        <li>If the letter is present and in the right position, it is colored green.</li>
+                        <li>
+                            If the guess is not in the GuessWord dictionary of almost all words, then
+                            all the letters in the guess are colored red. You can use the backspace key
+                            (⌫) to clear the guess. Alternatively, you can click or tap letters in the
+                            word and change them using either keyboard. When you do this, the letter you
+                            tap is highlit with a red dashed border. After you enter a letter or simply
+                            click or tap the highlit cell, the border is cleared. If the word is complete
+                            and you correct it, Guessword will remove the red, but only if the word is
+                            in its full dictionary.
+                        </li>
+                        <li>
+                            If your guess contains a letter that appears more than once in the target, then
+                            only a letter in the correct position will be colored green. Otherwise, the first match
+                            in the target will be colored yellow.
+                        </li>
+                        <li>
+                            If your guess contains the same letter more than once, then
+                            only a letter in the correct position will be colored green. Otherwise, the first match
+                            in the guess will be colored yellow.
+                        </li>
+                    </ol>
+                    Once you have completed a word, but before you have entered it, you can click on any letter(s) in the word and change
+                    it. This avoids you having to backspace out a typo.
+
+                    Sometimes, you end up with too many possibilities and too few turns to try them all.
+                    Suppose you have "WH--E". You choices are "WHALE", "WHERE", "WHILE", "WHINE", "WHITE", "WHOLE". "WHORE" and "WHOSE".
+                    In this case you could try a guess like "RIOTS". Depending on which letters are flagged green or yellow, you can determine
+                    which words can be removed fron the list of possibilities.
+                </div>
+                <p class="parahead">Special Features</p>
+                <div id="featuresbody">
+                    <ol>
+                        <li>
+                            <b>GuessWord</b> lets you choose between 4, 5 or 6 letter word games. Just click the "Games" menu item to choose.
+                        </li>
+                        <li>
+                            At the end of a game, you can start a new game by clicking the "Play" menu item or by clicking or pressing the enter key.
+                        </li>
+                        <li>
+                            <b>GuessWord</b> records your results in local storage inside you browser's memory. This information is used to show
+                            you your history when you select "history" from the menu.
+                        </li>
+                        <li>
+                            <b>GuessWord</b> does not use the Wordle word list or dictionary. Some words, like "SOARE" and "ROATE" do not
+                            work in <b>GuessWord</b>. Obvious obscenities have been deleted.
+                        </li>
+                        <li>
+                            <b>GuessWord</b> is completely browser based. The only time it communicates with the host web server is when
+                            you open up the <b>GuessWord</b> web page. After that, there is no further communication with the server.
+                            You can play or continue
+                            playing even if you don&rsquo;t have an internet cnnection provided you started <b>Griddle</b> while you had a connection.
+                            Its dictionaries are all stored locally to avoid having to use the server to check that words are
+                            valid, for example
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
